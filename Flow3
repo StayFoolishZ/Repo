@@ -10,11 +10,12 @@
         "repeat": "5",
         "crontab": "",
         "once": true,
-        "x": 142.22222222222223,
-        "y": 84.44444444444444,
+        "x": 110,
+        "y": 140,
         "wires": [
             [
-                "4adf674.de0a298"
+                "4adf674.de0a298",
+                "5474ce8b.8b4af"
             ]
         ]
     },
@@ -23,11 +24,11 @@
         "type": "function",
         "z": "8d6ea6e6.e3f918",
         "name": "Payload",
-        "func": "msg.headers={\n    deviceKey:\"E33uh6wmr0f3fr9d\"\n};\nmsg.payload=\"Temperature,,27\";\nmsg.payload=\"Humidity,,27\";\nreturn msg;",
+        "func": "msg.headers={\n    deviceKey:\"E33uh6wmr0f3fr9d\"\n};\nmsg.payload=\"Temperature,,15\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 295.55555555555554,
-        "y": 132.22222222222223,
+        "x": 280,
+        "y": 120,
         "wires": [
             [
                 "677233bb.a9e12c"
@@ -43,8 +44,8 @@
         "ret": "txt",
         "url": "https://api.mediatek.com/mcs/v2/devices/DrOwCQrr/datapoints.csv",
         "tls": "",
-        "x": 477,
-        "y": 141,
+        "x": 450,
+        "y": 120,
         "wires": [
             [
                 "ff6ebcbc.4d5d5",
@@ -59,8 +60,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 669,
-        "y": 147,
+        "x": 630,
+        "y": 120,
         "wires": []
     },
     {
@@ -71,8 +72,42 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 690,
-        "y": 214,
+        "x": 650,
+        "y": 180,
         "wires": []
+    },
+    {
+        "id": "c5d875e1.01be58",
+        "type": "http request",
+        "z": "8d6ea6e6.e3f918",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "url": "https://api.mediatek.com/mcs/v2/devices/DrOwCQrr/datapoints.csv",
+        "tls": "",
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "ff6ebcbc.4d5d5",
+                "56c782c6.78452c"
+            ]
+        ]
+    },
+    {
+        "id": "5474ce8b.8b4af",
+        "type": "function",
+        "z": "8d6ea6e6.e3f918",
+        "name": "Payload",
+        "func": "msg.headers={\n    deviceKey:\"E33uh6wmr0f3fr9d\"\n};\nmsg.payload=\"Humidity,,18\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "c5d875e1.01be58"
+            ]
+        ]
     }
 ]
