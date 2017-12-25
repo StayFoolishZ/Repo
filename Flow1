@@ -1,0 +1,131 @@
+[
+    {
+        "id": "37aee3ca.65cbcc",
+        "type": "rpi-gpio out",
+        "z": "66355002.140ee",
+        "name": "LED",
+        "pin": "11",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "65964ade.58a244",
+        "type": "debug",
+        "z": "66355002.140ee",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 730,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "d0112d15.20a59",
+        "type": "rpi-gpio in",
+        "z": "66355002.140ee",
+        "name": "switch",
+        "pin": "7",
+        "intype": "down",
+        "debounce": "25",
+        "read": false,
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "c9fea3a4.bf9ab"
+            ]
+        ]
+    },
+    {
+        "id": "c9fea3a4.bf9ab",
+        "type": "switch",
+        "z": "66355002.140ee",
+        "name": "choose",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "65fbb908.657f08"
+            ],
+            [
+                "935f5a94.321568"
+            ]
+        ]
+    },
+    {
+        "id": "65fbb908.657f08",
+        "type": "change",
+        "z": "66355002.140ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 60,
+        "wires": [
+            [
+                "37aee3ca.65cbcc",
+                "65964ade.58a244"
+            ]
+        ]
+    },
+    {
+        "id": "935f5a94.321568",
+        "type": "change",
+        "z": "66355002.140ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 180,
+        "wires": [
+            [
+                "37aee3ca.65cbcc",
+                "65964ade.58a244"
+            ]
+        ]
+    }
+]
